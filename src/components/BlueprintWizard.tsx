@@ -32,14 +32,14 @@ function Option({
       type="button"
       aria-pressed={selected}
       onClick={onClick}
-      className={`rounded-xl border p-4 text-left transition ${
+      className={`rounded-3xl border p-5 text-left transition ${
         selected
-          ? 'border-teal-700 bg-teal-50 ring-2 ring-teal-700/30'
-          : 'border-slate-200 bg-white hover:border-teal-600'
+          ? 'border-primary bg-primary/10 ring-2 ring-primary/30'
+          : 'border-outline-variant bg-white hover:border-primary'
       }`}
     >
-      <span className="block font-semibold text-slate-900">{title}</span>
-      <span className="block text-sm text-slate-500">{hint}</span>
+      <span className="block font-headline font-bold text-on-surface">{title}</span>
+      <span className="block text-sm text-on-surface-variant">{hint}</span>
     </button>
   )
 }
@@ -96,7 +96,7 @@ export default function BlueprintWizard() {
             key={label}
             aria-current={i === step ? 'step' : undefined}
             className={`flex-1 border-t-4 pt-2 ${
-              i <= step ? 'border-teal-700 text-teal-800' : 'border-slate-200 text-slate-400'
+              i <= step ? 'border-primary text-primary' : 'border-outline-variant text-outline'
             }`}
           >
             {label}
@@ -106,7 +106,7 @@ export default function BlueprintWizard() {
 
       {step === 0 && (
         <section>
-          <h2 className="mb-4 text-2xl font-bold">What do you want to build?</h2>
+          <h2 className="mb-4 font-headline text-2xl font-extrabold">What do you want to build?</h2>
           <div className="grid gap-3 sm:grid-cols-3">
             {SERVICES.map((s) => (
               <Option
@@ -123,8 +123,8 @@ export default function BlueprintWizard() {
 
       {step === 1 && (
         <section>
-          <h2 className="mb-1 text-2xl font-bold">What should it include?</h2>
-          <p className="mb-4 text-slate-500">Pick everything that applies.</p>
+          <h2 className="mb-1 font-headline text-2xl font-extrabold">What should it include?</h2>
+          <p className="mb-4 text-on-surface-variant">Pick everything that applies.</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {service.features.map((f) => (
               <Option
@@ -142,7 +142,7 @@ export default function BlueprintWizard() {
       {step === 2 && (
         <section className="space-y-6">
           <div>
-            <h2 className="mb-3 text-2xl font-bold">Where are you starting from?</h2>
+            <h2 className="mb-3 font-headline text-2xl font-extrabold">Where are you starting from?</h2>
             <div className="grid gap-3 sm:grid-cols-3">
               {STAGES.map((s) => (
                 <Option
@@ -156,7 +156,7 @@ export default function BlueprintWizard() {
             </div>
           </div>
           <div>
-            <h2 className="mb-3 text-2xl font-bold">When do you need it?</h2>
+            <h2 className="mb-3 font-headline text-2xl font-extrabold">When do you need it?</h2>
             <div className="grid gap-3 sm:grid-cols-3">
               {TIMELINES.map((t) => (
                 <Option
@@ -174,35 +174,35 @@ export default function BlueprintWizard() {
 
       {step === 3 && est && status !== 'sent' && (
         <section className="space-y-6">
-          <div className="rounded-2xl bg-teal-900 p-6 text-white">
-            <p className="text-sm uppercase tracking-wide text-teal-200">Indicative effort</p>
-            <p className="text-4xl font-bold">
+          <div className="rounded-[2rem] bg-primary p-6 text-white">
+            <p className="text-xs font-black uppercase tracking-widest text-white/80">Indicative effort</p>
+            <p className="font-headline text-4xl font-extrabold">
               {est.weeks[0]} to {est.weeks[1]} weeks
             </p>
-            <p className="mt-1 text-teal-100">
+            <p className="mt-1 text-white/90">
               {est.tier} project. Suggested team: {est.team.join(', ')}.
             </p>
             {est.tightTimeline && (
-              <p className="mt-3 rounded-lg bg-amber-400/20 p-3 text-sm text-amber-100">
+              <p className="mt-3 rounded-2xl bg-white/15 p-3 text-sm text-white">
                 This is longer than your target. We would discuss trimming scope or phasing it.
               </p>
             )}
           </div>
-          <pre className="whitespace-pre-wrap rounded-xl bg-slate-50 p-4 text-sm text-slate-700">
+          <pre className="whitespace-pre-wrap rounded-3xl bg-surface-container p-5 text-sm text-on-surface">
             {buildBrief(sel, contact)}
           </pre>
           <div className="grid gap-4 sm:grid-cols-3">
             {(['name', 'email', 'company'] as const).map((key) => (
-              <label key={key} className="block text-sm font-medium text-slate-700">
+              <label key={key} className="block text-sm font-bold text-on-surface">
                 {key === 'company' ? 'Company (optional)' : key[0].toUpperCase() + key.slice(1)}
                 <input
                   value={contact[key]}
                   onChange={(e) => setContact({ ...contact, [key]: e.target.value })}
                   type={key === 'email' ? 'email' : 'text'}
-                  className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+                  className="mt-1 w-full rounded-2xl border border-outline-variant bg-white px-4 py-3 font-normal"
                 />
                 {touched && errors[key] && (
-                  <span role="alert" className="text-xs text-red-600">
+                  <span role="alert" className="text-xs font-semibold text-red-700">
                     {errors[key]}
                   </span>
                 )}
@@ -210,7 +210,7 @@ export default function BlueprintWizard() {
             ))}
           </div>
           {status === 'error' && (
-            <p role="alert" className="text-sm text-red-600">
+            <p role="alert" className="text-sm font-semibold text-red-700">
               Something went wrong. Please try again.
             </p>
           )}
@@ -218,7 +218,7 @@ export default function BlueprintWizard() {
             type="button"
             onClick={send}
             disabled={status === 'sending'}
-            className="rounded-full bg-teal-800 px-6 py-3 font-semibold text-white hover:bg-teal-900 disabled:opacity-60"
+            className="rounded-full bg-primary px-8 py-3 text-xs font-black uppercase tracking-widest text-white hover:bg-primary-dark disabled:opacity-60"
           >
             {status === 'sending' ? 'Sending...' : 'Send blueprint to Cynbit'}
           </button>
@@ -226,9 +226,9 @@ export default function BlueprintWizard() {
       )}
 
       {status === 'sent' && (
-        <section className="rounded-2xl bg-teal-50 p-8 text-center">
-          <h2 className="text-2xl font-bold text-teal-900">Blueprint received</h2>
-          <p className="mt-2 text-slate-600">
+        <section className="rounded-[2rem] bg-primary/10 p-8 text-center">
+          <h2 className="font-headline text-2xl font-extrabold text-primary">Blueprint received</h2>
+          <p className="mt-2 text-on-surface-variant">
             The team gets your scope and estimate, so the first call can skip the basics.
           </p>
         </section>
@@ -240,7 +240,7 @@ export default function BlueprintWizard() {
             type="button"
             onClick={() => setStep(step - 1)}
             disabled={step === 0}
-            className="rounded-full px-5 py-2 font-medium text-slate-600 disabled:invisible"
+            className="rounded-full py-3 pr-5 text-xs font-black uppercase tracking-widest text-on-surface-variant disabled:invisible"
           >
             Back
           </button>
@@ -249,7 +249,7 @@ export default function BlueprintWizard() {
               type="button"
               onClick={() => setStep(step + 1)}
               disabled={!canNext}
-              className="rounded-full bg-teal-800 px-6 py-2 font-semibold text-white hover:bg-teal-900 disabled:opacity-40"
+              className="rounded-full bg-primary px-8 py-3 text-xs font-black uppercase tracking-widest text-white hover:bg-primary-dark disabled:opacity-40"
             >
               Next
             </button>
