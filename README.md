@@ -31,4 +31,4 @@ npm run build
 - `src/components/BlueprintWizard.tsx` is the wizard UI.
 - `src/app/api/inquiry/route.ts` re-validates the submission on the server and forwards it.
 
-The write-up is in [REPORT.md](REPORT.md).
+The write-up is in [REPORT.md](REPORT.md), with a PDF copy at [docs/Cynbit-Project-Blueprint-Report.pdf](docs/Cynbit-Project-Blueprint-Report.pdf).
