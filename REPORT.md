@@ -44,7 +44,18 @@ The estimate is a heuristic, not a quote. Each feature has a min and max in week
 
 I have not measured a conversion change, because that needs real traffic. The measurable version of this is the share of contact visits that become a submitted inquiry, plus how many first replies no longer need a scoping round.
 
-## 6. Limits and next steps
+## 6. Screenshots
+
+| Step | Screenshot |
+| --- | --- |
+| 1. Pick a service | ![Service step](docs/screenshots/1-service.png) |
+| 2. Pick the scope | ![Scope step](docs/screenshots/2-scope.png) |
+| 3. Starting point and deadline | ![Context step](docs/screenshots/3-context.png) |
+| 4. Blueprint with the tight-timeline warning and field errors | ![Blueprint step](docs/screenshots/4-blueprint-errors.png) |
+| 5. After sending | ![Sent](docs/screenshots/5-sent.png) |
+| Phone width | ![Mobile](docs/screenshots/6-mobile.png) |
+
+## 7. Limits and next steps
 
 - The week ranges are my own estimates from the services page. Cynbit should replace them with numbers from past projects. They live in one array in `src/lib/blueprint.ts`.
 - Submissions are only forwarded or logged. A real version would store them and email the visitor a copy of the brief.
