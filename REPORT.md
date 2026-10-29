@@ -2,6 +2,9 @@
 
 Candidate: Tanishq Jain. Task: improve cynbit.in with a working prototype.
 
+Live demo: https://cynbit-blueprint.vercel.app
+Repository: https://github.com/iamtanishqjain/cynbit-project-blueprint
+
 ## 1. What I looked at
 
 I went through the home, services and contact pages as a visitor and then checked the page source.

@@ -4,6 +4,8 @@ A four-step scoping wizard for cynbit.in. A visitor picks a service, the scope, 
 
 Built with Next.js 15 (App Router), TypeScript and Tailwind, the same stack Cynbit lists on its services page.
 
+Live demo: https://cynbit-blueprint.vercel.app
+
 ## Run it
 
 ```bash
